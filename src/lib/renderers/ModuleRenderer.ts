@@ -55,6 +55,20 @@ export class ModuleRenderer {
   }
 
   /**
+   * Checks if position is part of finder pattern (eye)
+   */
+  private isPartOfEye(row: number, col: number): boolean {
+    const { moduleCount } = this.options;
+    // Top-left eye
+    if (row < 7 && col < 7) return true;
+    // Top-right eye
+    if (row < 7 && col >= moduleCount - 7) return true;
+    // Bottom-left eye
+    if (row >= moduleCount - 7 && col < 7) return true;
+    return false;
+  }
+
+  /**
    * Renders all QR modules
    */
   render(fillStyle: string | CanvasGradient): void {
@@ -72,15 +86,35 @@ export class ModuleRenderer {
    * Renders modules with rounded corners
    */
   private renderRoundedModules(): void {
-    const { moduleCount, moduleSize, padding, moduleRadius } = this.options;
+    const {
+      moduleCount,
+      moduleSize,
+      padding,
+      moduleRadius,
+      eyeColor,
+      eyeRadius
+    } = this.options;
     const ctx = this.ctx;
-    const cornerRadius = moduleSize * moduleRadius;
 
     for (let row = 0; row < moduleCount; row++) {
       for (let col = 0; col < moduleCount; col++) {
         if (this.modules.get(row, col)) {
           const x = padding + col * moduleSize;
           const y = padding + row * moduleSize;
+
+          // Determine if this is part of an eye (finder pattern)
+          const isEye = this.isPartOfEye(row, col);
+
+          // Use eye-specific color if available
+          if (isEye && eyeColor) {
+            ctx.fillStyle = eyeColor;
+          }
+
+          // Use eye-specific radius if available, otherwise use moduleRadius
+          const cornerRadius =
+            isEye && eyeRadius !== undefined && eyeRadius > 0
+              ? moduleSize * eyeRadius
+              : moduleSize * moduleRadius;
 
           // Check adjacent modules
           const top = this.hasModule(row - 1, col);
@@ -198,7 +232,7 @@ export class ModuleRenderer {
    * Renders simple square modules
    */
   private renderSquareModules(): void {
-    const { moduleCount, moduleSize, padding } = this.options;
+    const { moduleCount, moduleSize, padding, eyeColor } = this.options;
     const ctx = this.ctx;
 
     for (let row = 0; row < moduleCount; row++) {
@@ -206,6 +240,12 @@ export class ModuleRenderer {
         if (this.modules.get(row, col)) {
           const x = padding + col * moduleSize;
           const y = padding + row * moduleSize;
+
+          // Use eye-specific color if this is part of an eye
+          if (this.isPartOfEye(row, col) && eyeColor) {
+            ctx.fillStyle = eyeColor;
+          }
+
           ctx.fillRect(x, y, moduleSize, moduleSize);
         }
       }
