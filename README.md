@@ -1,6 +1,10 @@
-# 🎨 QR Generator Styled
+# 🎨 @qr-styled/node
 
-A professional Node.js/TypeScript library for generating QR codes with advanced styling options including gradients, rounded modules, and logo support.
+**Professional QR Code Generator for Node.js**
+
+A powerful Node.js/TypeScript library for generating QR codes with advanced styling options including gradients, rounded modules, and logo support.
+
+> 💡 **Looking for browser support?** Check out [@qr-styled/browser](https://github.com/Luisma92/qr-styled-browser) for frontend/React/Vue applications.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org)
@@ -22,7 +26,9 @@ A professional Node.js/TypeScript library for generating QR codes with advanced 
 - 🔧 **Modular Architecture**: Clean, maintainable code
 
 ## �️ Visual Examples
+
 ### Advanced Features
+
 <table>
   <tr>
     <td align="center" valign="top">
@@ -138,13 +144,13 @@ A professional Node.js/TypeScript library for generating QR codes with advanced 
 ## �📦 Installation
 
 ```bash
-npm install qr-generator-styled
+npm install @qr-styled/node
 ```
 
 Or for global CLI usage:
 
 ```bash
-npm install -g qr-generator-styled
+npm install -g @qr-styled/node
 ```
 
 ## 🚀 Quick Start
@@ -165,7 +171,7 @@ qr-styled --url "https://github.com" --logo ./my-logo.png --out my-qr.png
 ### Library Usage
 
 ```typescript
-import { QRGenerator, generateQRToFile } from 'qr-generator-styled';
+import { QRGenerator, generateQRToFile } from '@qr-styled/node';
 
 // Basic URL QR code
 const generator = new QRGenerator({
@@ -354,7 +360,7 @@ await generateQRToFile(
 Main class for generating QR codes.
 
 ```typescript
-import { QRGenerator } from 'qr-generator-styled';
+import { QRGenerator } from '@qr-styled/node';
 
 const generator = new QRGenerator(options);
 ```
@@ -411,7 +417,7 @@ await generator.generateToFile('updated.png');
 Quickly generate a QR code and return the canvas.
 
 ```typescript
-import { generateQR } from 'qr-generator-styled';
+import { generateQR } from '@qr-styled/node';
 
 const canvas = await generateQR({ url: 'https://example.com' });
 ```
@@ -421,7 +427,7 @@ const canvas = await generateQR({ url: 'https://example.com' });
 Generate and save a QR code to file.
 
 ```typescript
-import { generateQRToFile } from 'qr-generator-styled';
+import { generateQRToFile } from '@qr-styled/node';
 
 await generateQRToFile(
   { url: 'https://example.com', gradient: true },
@@ -464,7 +470,7 @@ await generator.generateToFile('company-qr.png');
 
 ```typescript
 import express from 'express';
-import { QRGenerator } from 'qr-generator-styled';
+import { QRGenerator } from '@qr-styled/node';
 
 const app = express();
 
@@ -509,7 +515,7 @@ fetch('/api/qr-data')
 ### Global Installation
 
 ```bash
-npm install -g qr-generator-styled
+npm install -g @qr-styled/node
 ```
 
 ### Available Commands
@@ -610,7 +616,7 @@ app.get('/qr/:text', async (req, res) => {
 
 ```typescript
 // pages/api/qr.ts
-import { QRGenerator } from 'qr-generator-styled';
+import { QRGenerator } from '@qr-styled/node';
 
 export default async function handler(req, res) {
   const { url } = req.query;
@@ -656,7 +662,7 @@ npm run example:programmatic
 
 ## 📄 License
 
-MIT © Luis Yerena Sosa
+MIT © Luis Manuel Yerena Sosa
 
 ## 🙏 Contributing
 
@@ -672,7 +678,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 ## 🐛 Report Issues
 
-If you find a bug or have a suggestion, please [open an issue](https://github.com/Luisma92/qr-generator-styled/issues).
+If you find a bug or have a suggestion, please [open an issue](https://github.com/Luisma92/@qr-styled/node/issues).
 
 ## 📚 Resources
 

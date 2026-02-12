@@ -1,6 +1,64 @@
 # Changelog
 
-## [2.0.0] - 2026-02-12
+## [1.0.0] - 2026-02-12
+
+### 🎉 Scoped Package Release
+
+**BREAKING CHANGE**: Package renamed from `qr-generator-styled` to `@qr-styled/node`
+
+This release marks the transition to a scoped package architecture:
+- `@qr-styled/node` - Node.js/backend QR generation (this package)
+- `@qr-styled/browser` - Browser/frontend QR generation (coming soon)
+
+#### Migration Guide
+
+```bash
+# Old
+npm uninstall qr-generator-styled
+npm install @qr-styled/node
+
+# Update imports (no changes needed, same API)
+import { QRGenerator } from '@qr-styled/node';
+```
+
+#### Features (inherited from v2.0.x)
+
+- **Specialized QR Code Types**:
+  - 📇 vCard contact cards with full contact information
+  - 📶 WiFi network configuration (WPA, WEP, open networks)
+  - 📧 Email with pre-filled subject and body
+  - 💬 SMS with phone number and message
+  - 📍 Geolocation with latitude/longitude
+
+- **SVG Export**:
+  - 📄 Vector format for perfect scalability
+  - `generateToSVG()` and `generateToSVGFile()` methods
+  - Full color and styling support in SVG
+
+- **Eye Customization**:
+  - 👁️ Custom colors for finder patterns (eyes)
+  - 🔘 Custom radius for rounded corners on eyes
+  - Full control over QR code aesthetics
+
+- **Proper QR Margins**:
+  - 📏 Standard 4-module quiet zone
+  - Configurable margin size
+  - Better scanability
+
+- **Visual Examples**:
+  - 🖼️ 22 comprehensive visual examples
+  - Basic styles, advanced features, and logo integration
+  - All examples included in documentation
+
+#### API
+
+All features and APIs from v2.0.x are preserved with no breaking changes.
+
+---
+
+## Previous releases (as qr-generator-styled)
+
+## [2.0.1] - 2026-02-12
 
 ### Major Feature Release 🚀
 
