@@ -9,6 +9,8 @@ A professional browser QR code generator library with advanced styling options i
 
 Try the interactive demo to see all features in action!
 
+> **Note**: The live demo doesn't include logo examples due to CORS restrictions on external images. Logo functionality works perfectly when using your own local images or data URIs in your projects.
+
 ## Features
 
 ✅ **Browser-native** - Uses HTML5 Canvas API
