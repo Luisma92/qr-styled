@@ -24,7 +24,8 @@ export class SVGRenderer {
       foregroundColor,
       moduleRadius,
       eyeColor,
-      eyeRadius
+      eyeRadius,
+      eyeShape
     } = this.options;
     const modules = this.qrData.modules;
     const moduleCount = modules.size;
@@ -41,6 +42,11 @@ export class SVGRenderer {
 
     for (let row = 0; row < moduleCount; row++) {
       for (let col = 0; col < moduleCount; col++) {
+        // Skip eyes if using circular eye shape
+        if (eyeShape === 'circle' && this.isPartOfEye(col, row, moduleCount)) {
+          continue;
+        }
+
         if (this.hasModule(col, row)) {
           const x = col * moduleSize;
           const y = row * moduleSize;
@@ -63,7 +69,48 @@ export class SVGRenderer {
     }
 
     svg += `</g>`;
+
+    // Render circular eyes if enabled
+    if (eyeShape === 'circle') {
+      svg += this.generateCircularEyes(moduleCount, moduleSize);
+    }
+
     svg += `</svg>`;
+
+    return svg;
+  }
+
+  /**
+   * Generates circular finder patterns (eyes) for SVG
+   */
+  private generateCircularEyes(
+    moduleCount: number,
+    moduleSize: number
+  ): string {
+    const { eyeColor, backgroundColor, foregroundColor } = this.options;
+    const fillColor = eyeColor || foregroundColor;
+    let svg = '';
+
+    // Define the 3 eye positions (center of 7x7 area)
+    const eyePositions = [
+      { row: 3, col: 3 }, // Top-left
+      { row: 3, col: moduleCount - 4 }, // Top-right
+      { row: moduleCount - 4, col: 3 } // Bottom-left
+    ];
+
+    eyePositions.forEach(({ row, col }) => {
+      const centerX = col * moduleSize;
+      const centerY = row * moduleSize;
+
+      // Outer ring (7 modules diameter = 3.5 radius)
+      svg += `<circle cx="${centerX}" cy="${centerY}" r="${moduleSize * 3.5}" fill="${fillColor}"/>`;
+
+      // White space (5 modules diameter = 2.5 radius)
+      svg += `<circle cx="${centerX}" cy="${centerY}" r="${moduleSize * 2.5}" fill="${backgroundColor}"/>`;
+
+      // Inner dot (3 modules diameter = 1.5 radius)
+      svg += `<circle cx="${centerX}" cy="${centerY}" r="${moduleSize * 1.5}" fill="${fillColor}"/>`;
+    });
 
     return svg;
   }

@@ -1,6 +1,7 @@
 import {
   QROptions,
   VALID_LOGO_SHAPES,
+  VALID_EYE_SHAPES,
   VALID_ERROR_CORRECTION_LEVELS
 } from './types.js';
 
@@ -47,6 +48,10 @@ export function validateOptions(options: QROptions): void {
     (options.eyeRadius < 0 || options.eyeRadius > 0.5)
   ) {
     throw new Error('Eye radius must be between 0.0 and 0.5');
+  }
+
+  if (options.eyeShape && !VALID_EYE_SHAPES.includes(options.eyeShape as any)) {
+    throw new Error(`Eye shape must be one of: ${VALID_EYE_SHAPES.join(', ')}`);
   }
 
   if (

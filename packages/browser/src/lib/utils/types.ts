@@ -115,6 +115,8 @@ export interface QROptions {
   eyeColor?: string;
   /** Custom eye radius (0.0-0.5) */
   eyeRadius?: number;
+  /** Eye (finder pattern) shape */
+  eyeShape?: 'square' | 'rounded' | 'circle';
 }
 
 /**
@@ -143,7 +145,8 @@ export const DEFAULT_OPTIONS: Required<
   backgroundColor: '#ffffff',
   errorCorrectionLevel: 'H',
   eyeColor: '',
-  eyeRadius: 0
+  eyeRadius: 0,
+  eyeShape: 'square'
 };
 
 /**
@@ -152,10 +155,16 @@ export const DEFAULT_OPTIONS: Required<
 export const VALID_LOGO_SHAPES = ['circle', 'square'] as const;
 
 /**
+ * Valid eye shapes
+ */
+export const VALID_EYE_SHAPES = ['square', 'rounded', 'circle'] as const;
+
+/**
  * Valid error correction levels
  */
 export const VALID_ERROR_CORRECTION_LEVELS = ['L', 'M', 'Q', 'H'] as const;
 
 export type LogoShape = (typeof VALID_LOGO_SHAPES)[number];
+export type EyeShape = (typeof VALID_EYE_SHAPES)[number];
 export type ErrorCorrectionLevel =
   (typeof VALID_ERROR_CORRECTION_LEVELS)[number];

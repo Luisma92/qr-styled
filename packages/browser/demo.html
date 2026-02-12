@@ -312,6 +312,28 @@
           </button>
         </div>
       </div>
+
+      <!-- Example 13: Circular Eyes -->
+      <div class="demo-card">
+        <h3>Circular Eyes ✨</h3>
+        <div class="qr-container" id="qr13"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr13', 'circular-eyes-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 14: Gradient + Circular Eyes -->
+      <div class="demo-card">
+        <h3>Gradient Circular Eyes ✨</h3>
+        <div class="qr-container" id="qr14"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr14', 'gradient-circular-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
     </div>
 
     <script type="module">
@@ -543,6 +565,42 @@
           });
           await qr12.appendTo(document.getElementById('qr12'));
           window.qrGenerators.qr12 = qr12;
+
+          // Example 13: Circular Eyes
+          console.log('Generating QR13 - Circular Eyes...');
+          const qr13 = new QRGenerator({
+            url: 'https://github.com/Luisma92/qr-styled',
+            size: 300,
+            foregroundColor: '#2563eb',
+            backgroundColor: '#ffffff',
+            rounded: true,
+            moduleRadius: 0.4,
+            eyeColor: '#1e40af',
+            eyeShape: 'circle',
+            cornerRadius: 25
+          });
+          await qr13.appendTo(document.getElementById('qr13'));
+          window.qrGenerators.qr13 = qr13;
+          console.log('✅ QR13 completed');
+
+          // Example 14: Gradient + Circular Eyes
+          console.log('Generating QR14 - Gradient Circular Eyes...');
+          const qr14 = new QRGenerator({
+            url: 'https://www.npmjs.com/package/@qr-styled/browser',
+            size: 300,
+            gradient: true,
+            gradientColors: '#f093fb, #f5576c',
+            gradientAngle: 135,
+            backgroundColor: '#ffffff',
+            rounded: true,
+            moduleRadius: 0.45,
+            eyeColor: '#c2185b',
+            eyeShape: 'circle',
+            cornerRadius: 30
+          });
+          await qr14.appendTo(document.getElementById('qr14'));
+          window.qrGenerators.qr14 = qr14;
+          console.log('✅ QR14 completed');
 
           console.log('✅ All QR codes generated successfully!');
 

@@ -71,14 +71,114 @@ export class ModuleRenderer {
    * Renders all QR modules
    */
   render(fillStyle: string | CanvasGradient): void {
-    const { rounded } = this.options;
+    const { rounded, eyeShape } = this.options;
     this.ctx.fillStyle = fillStyle;
 
-    if (rounded) {
-      this.renderRoundedModules();
+    // Handle circular eyes separately
+    if (eyeShape === 'circle') {
+      this.renderModulesExcludingEyes(fillStyle, rounded);
+      this.renderCircularEyes();
     } else {
-      this.renderSquareModules();
+      // Normal rendering with square or rounded eyes
+      if (rounded) {
+        this.renderRoundedModules();
+      } else {
+        this.renderSquareModules();
+      }
     }
+  }
+
+  /**
+   * Renders modules excluding eye areas (for circular eyes)
+   */
+  private renderModulesExcludingEyes(
+    fillStyle: string | CanvasGradient,
+    rounded: boolean
+  ): void {
+    const { moduleCount, moduleSize, padding, moduleRadius } = this.options;
+    const ctx = this.ctx;
+    ctx.fillStyle = fillStyle;
+
+    for (let row = 0; row < moduleCount; row++) {
+      for (let col = 0; col < moduleCount; col++) {
+        // Skip eye modules
+        if (this.isPartOfEye(row, col)) continue;
+
+        if (this.modules.get(row, col)) {
+          const x = padding + col * moduleSize;
+          const y = padding + row * moduleSize;
+
+          if (rounded) {
+            const cornerRadius = moduleSize * moduleRadius;
+            const top = this.hasModule(row - 1, col);
+            const right = this.hasModule(row, col + 1);
+            const bottom = this.hasModule(row + 1, col);
+            const left = this.hasModule(row, col - 1);
+
+            const roundTL = !top && !left;
+            const roundTR = !top && !right;
+            const roundBR = !bottom && !right;
+            const roundBL = !bottom && !left;
+
+            const gap = 0.5;
+            const extendTop = top ? gap : 0;
+            const extendRight = right ? gap : 0;
+            const extendBottom = bottom ? gap : 0;
+            const extendLeft = left ? gap : 0;
+
+            this.drawRoundedModule(
+              x,
+              y,
+              moduleSize,
+              cornerRadius,
+              { roundTL, roundTR, roundBR, roundBL },
+              { extendTop, extendRight, extendBottom, extendLeft }
+            );
+          } else {
+            ctx.fillRect(x, y, moduleSize, moduleSize);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Renders circular finder patterns (eyes)
+   */
+  private renderCircularEyes(): void {
+    const { moduleCount, moduleSize, padding, eyeColor, backgroundColor } =
+      this.options;
+    const ctx = this.ctx;
+
+    // Define the 3 eye positions (center of 7x7 area)
+    const eyePositions = [
+      { row: 3, col: 3 }, // Top-left
+      { row: 3, col: moduleCount - 4 }, // Top-right
+      { row: moduleCount - 4, col: 3 } // Bottom-left
+    ];
+
+    eyePositions.forEach(({ row, col }) => {
+      const centerX = padding + col * moduleSize;
+      const centerY = padding + row * moduleSize;
+
+      // Outer ring (7 modules diameter = 3.5 radius)
+      ctx.fillStyle = eyeColor || ctx.fillStyle;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, moduleSize * 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // White space (5 modules diameter = 2.5 radius)
+      ctx.fillStyle = backgroundColor;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, moduleSize * 2.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Inner dot (3 modules diameter = 1.5 radius)
+      ctx.fillStyle = eyeColor || ctx.fillStyle;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, moduleSize * 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
   }
 
   /**
