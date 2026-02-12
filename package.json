@@ -59,12 +59,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Luisma92/qr-generator-styled.git"
+    "url": "https://github.com/Luisma92/qr-styled.git"
   },
   "bugs": {
-    "url": "https://github.com/Luisma92/qr-generator-styled/issues"
+    "url": "https://github.com/Luisma92/qr-styled/issues"
   },
-  "homepage": "https://github.com/Luisma92/qr-generator-styled#readme",
+  "homepage": "https://github.com/Luisma92/qr-styled#readme",
   "dependencies": {
     "canvas": "^3.2.0",
     "chalk": "^5.6.2",

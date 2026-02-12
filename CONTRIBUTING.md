@@ -1,6 +1,6 @@
-# Contributing to QR Generator Styled
+# Contributing to @qr-styled
 
-Thank you for your interest in contributing to qr-generator-styled! 🎉
+Thank you for your interest in contributing to @qr-styled! 🎉
 
 ## How to Contribute
 

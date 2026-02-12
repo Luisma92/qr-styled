@@ -37,7 +37,7 @@ Full TypeScript implementation with:
 ## Directory Structure
 
 ```
-qr-generator-styled/
+@qr-styled/node/
 ├── src/
 │   ├── index.ts                       # Public API entry point
 │   ├── types/
