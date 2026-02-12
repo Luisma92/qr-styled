@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@qr-styled/browser - Demo</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "qrcode": "https://esm.sh/qrcode@1.5.4"
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .demo-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .demo-card h3 {
+        margin: 0 0 15px 0;
+        color: #555;
+        font-size: 16px;
+      }
+      .qr-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200px;
+        background: #fafafa;
+        border-radius: 8px;
+        padding: 10px;
+      }
+      .qr-container canvas {
+        max-width: 100%;
+        height: auto;
+      }
+      .controls {
+        margin-top: 15px;
+        display: flex;
+        gap: 8px;
+      }
+      button {
+        flex: 1;
+        padding: 8px 16px;
+        background: #1a73e8;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #1557b0;
+      }
+      button:active {
+        transform: scale(0.98);
+      }
+      .loading {
+        text-align: center;
+        color: #999;
+        padding: 40px;
+      }
+      .error {
+        background: #ffebee;
+        color: #c62828;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px auto;
+        max-width: 800px;
+        border-left: 4px solid #c62828;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>@qr-styled/browser Demo</h1>
+    <p style="text-align: center; color: #666">
+      Interactive examples showcasing the browser QR code generator
+    </p>
+
+    <div
+      style="
+        background: #e3f2fd;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0 40px 0;
+        border-left: 4px solid #2196f3;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      "
+    >
+      <h3 style="margin: 0 0 10px 0; color: #1976d2">
+        📘 How to run this demo
+      </h3>
+      <p style="margin: 0 0 10px 0; color: #0d47a1">
+        This demo requires a local HTTP server to work correctly. Run:
+      </p>
+      <pre
+        style="
+          background: #fff;
+          padding: 12px;
+          border-radius: 4px;
+          overflow-x: auto;
+          margin: 0 0 10px 0;
+          color: #0d47a1;
+        "
+      ><code>npm run demo</code></pre>
+      <p style="margin: 0; color: #0d47a1; font-size: 14px">
+        Then open
+        <strong>http://localhost:3000/demo.html</strong> in your browser.
+      </p>
+    </div>
+
+    <div class="demo-grid">
+      <!-- Example 1: Basic -->
+      <div class="demo-card">
+        <h3>Basic QR Code</h3>
+        <div class="qr-container" id="qr1"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr1', 'basic-qr.png')">
+            Download PNG
+          </button>
+          <button onclick="downloadSVG('qr1', 'basic-qr.svg')">
+            Download SVG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 2: Gradient -->
+      <div class="demo-card">
+        <h3>Gradient QR Code</h3>
+        <div class="qr-container" id="qr2"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr2', 'gradient-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 3: Rounded -->
+      <div class="demo-card">
+        <h3>Rounded Modules</h3>
+        <div class="qr-container" id="qr3"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr3', 'rounded-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 4: Custom Eyes -->
+      <div class="demo-card">
+        <h3>Custom Eye Color</h3>
+        <div class="qr-container" id="qr4"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr4', 'custom-eyes-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 5: vCard -->
+      <div class="demo-card">
+        <h3>vCard Contact</h3>
+        <div class="qr-container" id="qr5"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr5', 'vcard-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 6: WiFi -->
+      <div class="demo-card">
+        <h3>WiFi Configuration</h3>
+        <div class="qr-container" id="qr6"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr6', 'wifi-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { QRGenerator } from './dist/index.js';
+      try {
+        // Store QR generators globally for download functions
+        window.qrGenerators = {};
+
+        // Example 1: Basic QR Code
+        const qr1 = new QRGenerator({
+          url: 'https://github.com/Luisma92/qr-styled',
+          size: 300,
+          foregroundColor: '#000000',
+          backgroundColor: '#ffffff'
+        });
+        await qr1.appendTo(document.getElementById('qr1'));
+        window.qrGenerators.qr1 = qr1;
+
+        // Example 2: Gradient QR Code
+        const qr2 = new QRGenerator({
+          url: 'https://www.npmjs.com/package/@qr-styled/browser',
+          size: 300,
+          gradient: true,
+          gradientColors: '#667eea, #764ba2, #f093fb',
+          gradientAngle: 135,
+          rounded: true
+        });
+        await qr2.appendTo(document.getElementById('qr2'));
+        window.qrGenerators.qr2 = qr2;
+
+        // Example 3: Rounded Modules
+        const qr3 = new QRGenerator({
+          url: 'https://qr-styled.dev',
+          size: 300,
+          foregroundColor: '#2196f3',
+          backgroundColor: '#ffffff',
+          rounded: true,
+          moduleRadius: 0.5,
+          cornerRadius: 20
+        });
+        await qr3.appendTo(document.getElementById('qr3'));
+        window.qrGenerators.qr3 = qr3;
+
+        // Example 4: Custom Eyes
+        const qr4 = new QRGenerator({
+          url: 'https://example.com/custom-eyes',
+          size: 300,
+          foregroundColor: '#000000',
+          backgroundColor: '#ffffff',
+          eyeColor: '#ff5722',
+          eyeRadius: 0.5,
+          rounded: true
+        });
+        await qr4.appendTo(document.getElementById('qr4'));
+        window.qrGenerators.qr4 = qr4;
+
+        // Example 5: vCard Contact
+        const qr5 = new QRGenerator({
+          type: 'vcard',
+          data: {
+            firstName: 'John',
+            lastName: 'Doe',
+            organization: 'Tech Company Inc.',
+            phone: '+1-234-567-8900',
+            email: 'john.doe@example.com',
+            url: 'https://johndoe.com'
+          },
+          size: 300,
+          gradient: true,
+          gradientColors: '#11998e, #38ef7d',
+          rounded: true
+        });
+        await qr5.appendTo(document.getElementById('qr5'));
+        window.qrGenerators.qr5 = qr5;
+
+        // Example 6: WiFi Configuration
+        const qr6 = new QRGenerator({
+          type: 'wifi',
+          data: {
+            ssid: 'MyWiFiNetwork',
+            password: 'SecurePassword123',
+            encryption: 'WPA'
+          },
+          size: 300,
+          foregroundColor: '#9c27b0',
+          backgroundColor: '#ffffff',
+          rounded: true,
+          cornerRadius: 25
+        });
+        await qr6.appendTo(document.getElementById('qr6'));
+        window.qrGenerators.qr6 = qr6;
+
+        console.log('✅ All QR codes generated successfully!');
+      } catch (error) {
+        console.error('❌ Error loading demo:', error);
+        document.body.innerHTML = `
+        <div style="padding: 40px; max-width: 800px; margin: 0 auto;">
+          <div class="error">
+            <h2 style="margin-top: 0;">⚠️ Demo Loading Error</h2>
+            <p><strong>Error:</strong> ${error.message}</p>
+            <p>This demo must be run through a local HTTP server. The browser cannot load ES modules from file:// protocol.</p>
+            <h3>To run this demo:</h3>
+            <ol>
+              <li>In your terminal, navigate to this directory</li>
+              <li>Run: <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 3px;">npm run demo</code></li>
+              <li>Open <strong>http://localhost:3000/demo.html</strong> in your browser</li>
+            </ol>
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
+              Alternatively, you can use any static file server like <code>npx serve</code> or <code>python3 -m http.server</code>
+            </p>
+          </div>
+        </div>
+      `;
+      }
+    </script>
+
+    <script>
+      // Global functions for download buttons
+      window.downloadQR = async function (containerId, filename) {
+        const qr = window.qrGenerators[containerId];
+        if (qr) {
+          await qr.download(filename);
+        }
+      };
+
+      window.downloadSVG = async function (containerId, filename) {
+        const qr = window.qrGenerators[containerId];
+        if (qr) {
+          await qr.downloadSVG(filename);
+        }
+      };
+    </script>
+
+    <div
+      style="
+        margin-top: 60px;
+        padding: 20px;
+        background: #fff3cd;
+        border-radius: 8px;
+        border-left: 4px solid #ffc107;
+      "
+    >
+      <h3 style="margin-top: 0">ℹ️ Integration Note</h3>
+      <p style="margin: 0; color: #856404">
+        This is a demo template. To use @qr-styled/browser in your project:
+      </p>
+      <pre
+        style="
+          background: #f8f9fa;
+          padding: 15px;
+          border-radius: 4px;
+          overflow-x: auto;
+          margin: 15px 0 0 0;
+        "
+      ><code>npm install @qr-styled/browser
+
+import { QRGenerator } from '@qr-styled/browser';
+
+const qr = new QRGenerator({
+  url: 'https://example.com',
+  size: 300,
+  gradient: true,
+  gradientColors: '#667eea, #764ba2'
+});
+
+await qr.appendTo(document.getElementById('container'));</code></pre>
+    </div>
+  </body>
+</html>

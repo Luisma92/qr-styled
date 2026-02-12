@@ -1,87 +1,28 @@
 {
-  "name": "@qr-styled/node",
-  "version": "1.0.1",
-  "description": "A professional Node.js QR code generator library with advanced styling options including gradients, rounded modules, logo support, specialized QR types (vCard, WiFi, Email, SMS, Geo), SVG export, and eye customization",
-  "main": "./dist/index.js",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
-  "bin": {
-    "qr-styled": "./dist/cli/index.js",
-    "qrgen": "./dist/cli/index.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "start": "tsx src/cli/index.ts",
-    "dev": "tsx src/cli/index.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "example:basic": "tsx examples/basic.ts",
-    "example:programmatic": "tsx examples/programmatic.ts",
-    "example:advanced": "tsx examples/advanced.ts",
-    "example:basic-styles": "tsx examples/basic-examples.ts",
-    "example:create-logos": "tsx examples/create-logos.ts",
-    "example:with-logos": "tsx examples/logo-examples.ts",
-    "example:all": "npm run example:advanced && npm run example:basic-styles && npm run example:create-logos && npm run example:with-logos"
-  },
-  "keywords": [
-    "qr",
-    "qrcode",
-    "qr-code",
-    "generator",
-    "styled",
-    "gradient",
-    "logo",
-    "custom",
-    "canvas",
-    "image",
-    "vcard",
-    "wifi",
-    "svg",
-    "email",
-    "sms",
-    "geo",
-    "contact-card",
-    "typescript"
+  "name": "@qr-styled/monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QR Code generator with styling support - Monorepo",
+  "workspaces": [
+    "packages/*"
   ],
-  "author": "Luis Manuel Yerena Sosa",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.0.0"
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "clean": "npm run clean --workspaces",
+    "node:build": "npm run build -w @qr-styled/node",
+    "node:test": "npm run test -w @qr-styled/node",
+    "browser:build": "npm run build -w @qr-styled/browser",
+    "browser:test": "npm run test -w @qr-styled/browser"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Luisma92/qr-styled.git"
+    "url": "git+https://github.com/Luisma92/qr-styled.git"
   },
+  "author": "Luis",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Luisma92/qr-styled/issues"
   },
-  "homepage": "https://github.com/Luisma92/qr-styled#readme",
-  "dependencies": {
-    "canvas": "^3.2.0",
-    "chalk": "^5.6.2",
-    "qrcode": "^1.5.4",
-    "yargs": "^18.0.0"
-  },
-  "files": [
-    "dist/",
-    "README.md",
-    "LICENSE"
-  ],
-  "devDependencies": {
-    "@types/node": "^25.2.3",
-    "@types/yargs": "^17.0.35",
-    "@vitest/ui": "^4.0.18",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
-  }
+  "homepage": "https://github.com/Luisma92/qr-styled#readme"
 }
