@@ -7,9 +7,11 @@ QR Code generator with advanced styling support for Node.js and Browser environm
 This monorepo contains multiple packages:
 
 ### [@qr-styled/node](./packages/node)
+
 QR Code generator for Node.js with support for PNG, JPEG, and SVG export.
 
 **Features:**
+
 - ✅ PNG/JPEG generation using node-canvas
 - ✅ SVG export
 - ✅ Custom colors and gradients
@@ -24,9 +26,11 @@ npm install @qr-styled/node
 [View Documentation →](./packages/node/README.md)
 
 ### [@qr-styled/browser](./packages/browser)
+
 QR Code generator for browser environments using HTML5 Canvas.
 
 **Features:**
+
 - ✅ Canvas-based rendering
 - ✅ DataURL/Blob export
 - ✅ Custom colors and gradients
@@ -74,4 +78,4 @@ qr-styled/
 
 ## License
 
-MIT © Luis
+MIT © Luis Manuel Yerena Sosa
