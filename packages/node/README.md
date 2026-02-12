@@ -32,28 +32,28 @@ A powerful Node.js/TypeScript library for generating QR codes with advanced styl
 <table>
   <tr>
     <td align="center" valign="top">
-      <img src="docs/images/vcard-contact.png" width="180" alt="vCard Contact QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/vcard-contact.png" width="180" alt="vCard Contact QR"/>
       <br/>
       <b>vCard Contact</b>
       <br/>
       <sub>Purple gradient with custom eyes</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/wifi-network.png" width="180" alt="WiFi Network QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/wifi-network.png" width="180" alt="WiFi Network QR"/>
       <br/>
       <b>WiFi Network</b>
       <br/>
       <sub>Green gradient with rounded modules</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/email-contact.png" width="180" alt="Email Contact QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/email-contact.png" width="180" alt="Email Contact QR"/>
       <br/>
       <b>Email Contact</b>
       <br/>
       <sub>Pink gradient with eye customization</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/custom-eyes.png" width="180" alt="Custom Eyes QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/custom-eyes.png" width="180" alt="Custom Eyes QR"/>
       <br/>
       <b>Custom Eyes</b>
       <br/>
@@ -67,35 +67,35 @@ A powerful Node.js/TypeScript library for generating QR codes with advanced styl
 <table>
   <tr>
     <td align="center" valign="top">
-      <img src="docs/images/basic-classic.png" width="150" alt="Classic Black & White QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/basic-classic.png" width="150" alt="Classic Black & White QR"/>
       <br/>
       <b>Classic</b>
       <br/>
       <sub>Traditional black & white</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/basic-blue.png" width="150" alt="Professional Blue QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/basic-blue.png" width="150" alt="Professional Blue QR"/>
       <br/>
       <b>Professional</b>
       <br/>
       <sub>Blue rounded design</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/basic-green.png" width="150" alt="Eco Green QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/basic-green.png" width="150" alt="Eco Green QR"/>
       <br/>
       <b>Eco</b>
       <br/>
       <sub>Green with custom eyes</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/basic-red.png" width="150" alt="Alert Red QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/basic-red.png" width="150" alt="Alert Red QR"/>
       <br/>
       <b>Alert</b>
       <br/>
       <sub>Red attention-grabbing</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/basic-purple.png" width="150" alt="Creative Purple QR"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/basic-purple.png" width="150" alt="Creative Purple QR"/>
       <br/>
       <b>Creative</b>
       <br/>
@@ -109,28 +109,28 @@ A powerful Node.js/TypeScript library for generating QR codes with advanced styl
 <table>
   <tr>
     <td align="center" valign="top">
-      <img src="docs/images/logo-corporate.png" width="160" alt="Corporate QR with Logo"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/logo-corporate.png" width="160" alt="Corporate QR with Logo"/>
       <br/>
       <b>Corporate</b>
       <br/>
       <sub>Circle logo, professional blue</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/logo-eco.png" width="160" alt="Eco Brand QR with Logo"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/logo-eco.png" width="160" alt="Eco Brand QR with Logo"/>
       <br/>
       <b>Eco Brand</b>
       <br/>
       <sub>Square logo, green gradient</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/logo-tech.png" width="160" alt="Tech Startup QR with Logo"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/logo-tech.png" width="160" alt="Tech Startup QR with Logo"/>
       <br/>
       <b>Tech Startup</b>
       <br/>
       <sub>Circle logo, purple gradient</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/images/logo-restaurant.png" width="160" alt="Restaurant QR with Logo"/>
+      <img src="https://raw.githubusercontent.com/Luisma92/qr-styled/main/packages/node/docs/images/logo-restaurant.png" width="160" alt="Restaurant QR with Logo"/>
       <br/>
       <b>Restaurant</b>
       <br/>

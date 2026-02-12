@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2] - 2026-02-12
+
+### 📚 Documentation
+
+- Fixed README image links to use absolute GitHub URLs for proper display on npm
+- Images now render correctly in npm package documentation
+
 ## [1.0.0] - 2026-02-12
 
 ### 🎉 Scoped Package Release
