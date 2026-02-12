@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0] - 2024-02-12
+## [2.0.0] - 2026-02-12
 
 ### Major Feature Release 🚀
 

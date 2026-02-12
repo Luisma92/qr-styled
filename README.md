@@ -336,7 +336,7 @@ await generator.generateToFile('instagram-qr.png');
 ```typescript
 const generator = new QRGenerator({
   url: 'https://your-company.com',
-  color: '#1a365d',
+  foregroundColor: '#1a365d',
   logo: './company-logo.png',
   logoShape: 'square',
   logoRadius: 15,

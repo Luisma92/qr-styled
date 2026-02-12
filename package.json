@@ -38,7 +38,15 @@
     "logo",
     "custom",
     "canvas",
-    "image"
+    "image",
+    "vcard",
+    "wifi",
+    "svg",
+    "email",
+    "sms",
+    "geo",
+    "contact-card",
+    "typescript"
   ],
   "author": "Luis Manuel Yerena Sosa",
   "license": "MIT",
