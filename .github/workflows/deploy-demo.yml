@@ -28,9 +28,13 @@ jobs:
         working-directory: packages/browser
         run: npm install
 
-      - name: Build
+      - name: Build TypeScript
         working-directory: packages/browser
         run: npm run build
+
+      - name: Build demo bundle
+        working-directory: packages/browser
+        run: npm run build:demo
 
       - name: Prepare demo
         run: |

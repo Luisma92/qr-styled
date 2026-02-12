@@ -4,13 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@qr-styled/browser - Demo</title>
-    <script type="importmap">
-      {
-        "imports": {
-          "qrcode": "https://esm.sh/qrcode@1.5.4"
-        }
-      }
-    </script>
     <style>
       body {
         font-family:
@@ -95,8 +88,18 @@
   </head>
   <body>
     <h1>@qr-styled/browser Demo</h1>
-    <p style="text-align: center; color: #666">
-      Interactive examples showcasing the browser QR code generator
+    <p
+      style="
+        text-align: center;
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto 20px;
+      "
+    >
+      Interactive examples showcasing the browser QR code generator with
+      <strong>gradients</strong>, <strong>rounded modules</strong>,
+      <strong>custom eye colors</strong>, <strong>logo integration</strong>, and
+      specialized QR types
     </p>
 
     <div
@@ -159,7 +162,7 @@
         </div>
       </div>
 
-      <!-- Example 3: Rounded -->
+      <!-- Example 3: Rounded Modules -->
       <div class="demo-card">
         <h3>Rounded Modules</h3>
         <div class="qr-container" id="qr3"></div>
@@ -170,7 +173,7 @@
         </div>
       </div>
 
-      <!-- Example 4: Custom Eyes -->
+      <!-- Example 4: Custom Eye Color -->
       <div class="demo-card">
         <h3>Custom Eye Color</h3>
         <div class="qr-container" id="qr4"></div>
@@ -181,23 +184,89 @@
         </div>
       </div>
 
-      <!-- Example 5: vCard -->
+      <!-- Example 5: Gradient Eyes + Rounded -->
       <div class="demo-card">
-        <h3>vCard Contact</h3>
+        <h3>Gradient with Colored Eyes</h3>
         <div class="qr-container" id="qr5"></div>
         <div class="controls">
-          <button onclick="downloadQR('qr5', 'vcard-qr.png')">
+          <button onclick="downloadQR('qr5', 'gradient-eyes-qr.png')">
             Download PNG
           </button>
         </div>
       </div>
 
-      <!-- Example 6: WiFi -->
+      <!-- Example 6: Logo - Circle Shape -->
       <div class="demo-card">
-        <h3>WiFi Configuration</h3>
+        <h3>QR with Logo (Circle)</h3>
         <div class="qr-container" id="qr6"></div>
         <div class="controls">
-          <button onclick="downloadQR('qr6', 'wifi-qr.png')">
+          <button onclick="downloadQR('qr6', 'logo-circle-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 7: Logo - Square Shape -->
+      <div class="demo-card">
+        <h3>QR with Logo (Square)</h3>
+        <div class="qr-container" id="qr7"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr7', 'logo-square-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 8: Logo + Gradient -->
+      <div class="demo-card">
+        <h3>Logo with Gradient</h3>
+        <div class="qr-container" id="qr8"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr8', 'logo-gradient-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 9: vCard -->
+      <div class="demo-card">
+        <h3>vCard Contact</h3>
+        <div class="qr-container" id="qr9"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr9', 'vcard-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 10: WiFi -->
+      <div class="demo-card">
+        <h3>WiFi Configuration</h3>
+        <div class="qr-container" id="qr10"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr10', 'wifi-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 11: Email -->
+      <div class="demo-card">
+        <h3>Email QR Code</h3>
+        <div class="qr-container" id="qr11"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr11', 'email-qr.png')">
+            Download PNG
+          </button>
+        </div>
+      </div>
+
+      <!-- Example 12: SMS -->
+      <div class="demo-card">
+        <h3>SMS QR Code</h3>
+        <div class="qr-container" id="qr12"></div>
+        <div class="controls">
+          <button onclick="downloadQR('qr12', 'sms-qr.png')">
             Download PNG
           </button>
         </div>
@@ -205,7 +274,7 @@
     </div>
 
     <script type="module">
-      import { QRGenerator } from './dist/index.js';
+      import { QRGenerator } from './dist/bundle.js';
       try {
         // Store QR generators globally for download functions
         window.qrGenerators = {};
@@ -245,21 +314,90 @@
         await qr3.appendTo(document.getElementById('qr3'));
         window.qrGenerators.qr3 = qr3;
 
-        // Example 4: Custom Eyes
+        // Example 4: Custom Eye Color (different from modules)
         const qr4 = new QRGenerator({
           url: 'https://example.com/custom-eyes',
           size: 300,
-          foregroundColor: '#000000',
+          foregroundColor: '#1a1a1a',
           backgroundColor: '#ffffff',
-          eyeColor: '#ff5722',
+          eyeColor: '#e91e63',
           eyeRadius: 0.5,
-          rounded: true
+          rounded: true,
+          moduleRadius: 0.4
         });
         await qr4.appendTo(document.getElementById('qr4'));
         window.qrGenerators.qr4 = qr4;
 
-        // Example 5: vCard Contact
+        // Example 5: Gradient with Colored Eyes + Rounded
         const qr5 = new QRGenerator({
+          url: 'https://example.com/gradient-eyes',
+          size: 300,
+          gradient: true,
+          gradientColors: '#FF6B6B, #4ECDC4, #45B7D1',
+          gradientAngle: 45,
+          eyeColor: '#2d3436',
+          eyeRadius: 0.5,
+          rounded: true,
+          moduleRadius: 0.45,
+          cornerRadius: 25
+        });
+        await qr5.appendTo(document.getElementById('qr5'));
+        window.qrGenerators.qr5 = qr5;
+
+        // Example 6: Logo - Circle Shape
+        const qr6 = new QRGenerator({
+          url: 'https://github.com/Luisma92/qr-styled',
+          size: 300,
+          foregroundColor: '#000000',
+          backgroundColor: '#ffffff',
+          logo: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+          logoSize: 80,
+          logoShape: 'circle',
+          logoBackgroundColor: '#ffffff',
+          logoPadding: 8,
+          rounded: true
+        });
+        await qr6.appendTo(document.getElementById('qr6'));
+        window.qrGenerators.qr6 = qr6;
+
+        // Example 7: Logo - Square Shape
+        const qr7 = new QRGenerator({
+          url: 'https://www.npmjs.com/package/@qr-styled/browser',
+          size: 300,
+          foregroundColor: '#cb3837',
+          backgroundColor: '#ffffff',
+          logo: 'https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png',
+          logoSize: 70,
+          logoShape: 'square',
+          logoBackgroundColor: '#ffffff',
+          logoRadius: 10,
+          logoPadding: 8,
+          rounded: true,
+          eyeColor: '#cb3837'
+        });
+        await qr7.appendTo(document.getElementById('qr7'));
+        window.qrGenerators.qr7 = qr7;
+
+        // Example 8: Logo with Gradient
+        const qr8 = new QRGenerator({
+          url: 'https://qr-styled.dev',
+          size: 300,
+          gradient: true,
+          gradientColors: '#8E2DE2, #4A00E0',
+          gradientAngle: 135,
+          logo: 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png',
+          logoSize: 75,
+          logoShape: 'circle',
+          logoBackgroundColor: '#000000',
+          logoPadding: 10,
+          rounded: true,
+          eyeColor: '#8E2DE2'
+        });
+        await qr8.appendTo(document.getElementById('qr8'));
+        window.qrGenerators.qr8 = qr8;
+
+        // Example 9: vCard Contact
+        const qr9 = new QRGenerator({
           type: 'vcard',
           data: {
             firstName: 'John',
@@ -272,13 +410,15 @@
           size: 300,
           gradient: true,
           gradientColors: '#11998e, #38ef7d',
-          rounded: true
+          rounded: true,
+          eyeColor: '#0e7c61',
+          eyeRadius: 0.5
         });
-        await qr5.appendTo(document.getElementById('qr5'));
-        window.qrGenerators.qr5 = qr5;
+        await qr9.appendTo(document.getElementById('qr9'));
+        window.qrGenerators.qr9 = qr9;
 
-        // Example 6: WiFi Configuration
-        const qr6 = new QRGenerator({
+        // Example 10: WiFi Configuration
+        const qr10 = new QRGenerator({
           type: 'wifi',
           data: {
             ssid: 'MyWiFiNetwork',
@@ -286,13 +426,54 @@
             encryption: 'WPA'
           },
           size: 300,
-          foregroundColor: '#9c27b0',
+          foregroundColor: '#5e35b1',
           backgroundColor: '#ffffff',
           rounded: true,
-          cornerRadius: 25
+          moduleRadius: 0.5,
+          cornerRadius: 25,
+          eyeColor: '#311b92',
+          eyeRadius: 0.5
         });
-        await qr6.appendTo(document.getElementById('qr6'));
-        window.qrGenerators.qr6 = qr6;
+        await qr10.appendTo(document.getElementById('qr10'));
+        window.qrGenerators.qr10 = qr10;
+
+        // Example 11: Email QR Code
+        const qr11 = new QRGenerator({
+          type: 'email',
+          data: {
+            email: 'contact@example.com',
+            subject: 'Hello from QR Code',
+            body: 'Scanned from @qr-styled/browser demo'
+          },
+          size: 300,
+          gradient: true,
+          gradientColors: '#FC466B, #3F5EFB',
+          gradientAngle: 90,
+          rounded: true,
+          eyeColor: '#FC466B',
+          eyeRadius: 0.4
+        });
+        await qr11.appendTo(document.getElementById('qr11'));
+        window.qrGenerators.qr11 = qr11;
+
+        // Example 12: SMS QR Code
+        const qr12 = new QRGenerator({
+          type: 'sms',
+          data: {
+            phone: '+1234567890',
+            message: 'Check out @qr-styled/browser!'
+          },
+          size: 300,
+          foregroundColor: '#00897b',
+          backgroundColor: '#ffffff',
+          rounded: true,
+          moduleRadius: 0.5,
+          eyeColor: '#004d40',
+          eyeRadius: 0.5,
+          cornerRadius: 30
+        });
+        await qr12.appendTo(document.getElementById('qr12'));
+        window.qrGenerators.qr12 = qr12;
 
         console.log('✅ All QR codes generated successfully!');
       } catch (error) {

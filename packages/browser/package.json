@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "build:demo": "node build-demo.js",
     "prepublishOnly": "npm run build",
     "demo": "python3 -m http.server 3000",
     "test": "vitest run",
@@ -64,6 +65,7 @@
   "devDependencies": {
     "@types/qrcode": "^1.5.5",
     "@vitest/ui": "^4.0.18",
+    "esbuild": "^0.24.0",
     "happy-dom": "^15.0.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
