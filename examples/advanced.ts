@@ -41,8 +41,12 @@ async function generateExamples() {
       country: 'USA'
     },
     size: 600,
-    foregroundColor: '#1976D2',
-    backgroundColor: '#E3F2FD',
+    gradient: true,
+    gradientColors: '#667eea,#764ba2',
+    gradientAngle: 45,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#4c1d95',
+    eyeRadius: 0.5,
     rounded: true,
     moduleRadius: 0.4
   });
@@ -60,10 +64,14 @@ async function generateExamples() {
       encryption: 'WPA'
     },
     size: 600,
-    foregroundColor: '#388E3C',
-    backgroundColor: '#E8F5E9',
-    eyeColor: '#1B5E20',
-    eyeRadius: 0.5
+    gradient: true,
+    gradientColors: '#56ab2f,#a8e063',
+    gradientAngle: 90,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#2d5016',
+    eyeRadius: 0.5,
+    rounded: true,
+    moduleRadius: 0.35
   });
 
   await wifiQR.generateToFile(path.join(OUTPUT_DIR, 'wifi-network.png'));
@@ -79,10 +87,14 @@ async function generateExamples() {
       body: 'Hello, I would like to know more about your products.'
     },
     size: 600,
-    foregroundColor: '#D32F2F',
-    backgroundColor: '#FFEBEE',
     gradient: true,
-    gradientColors: '#D32F2F,#F44336,#EF5350'
+    gradientColors: '#f857a6,#ff5858',
+    gradientAngle: 135,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#c41e3a',
+    eyeRadius: 0.4,
+    rounded: true,
+    moduleRadius: 0.35
   });
 
   await emailQR.generateToFile(path.join(OUTPUT_DIR, 'email-contact.png'));
@@ -97,8 +109,14 @@ async function generateExamples() {
       message: 'Hello! I scanned your QR code.'
     },
     size: 600,
-    foregroundColor: '#7B1FA2',
-    backgroundColor: '#F3E5F5'
+    gradient: true,
+    gradientColors: '#FC466B,#3F5EFB',
+    gradientAngle: 45,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#6B46C1',
+    eyeRadius: 0.5,
+    rounded: true,
+    moduleRadius: 0.4
   });
 
   await smsQR.generateToFile(path.join(OUTPUT_DIR, 'sms-message.png'));
@@ -113,10 +131,14 @@ async function generateExamples() {
       longitude: -122.4194
     },
     size: 600,
-    foregroundColor: '#F57C00',
-    backgroundColor: '#FFF3E0',
-    eyeColor: '#E65100',
-    eyeRadius: 0.3
+    gradient: true,
+    gradientColors: '#fa709a,#fee140',
+    gradientAngle: 90,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#f6416c',
+    eyeRadius: 0.5,
+    rounded: true,
+    moduleRadius: 0.35
   });
 
   await geoQR.generateToFile(path.join(OUTPUT_DIR, 'geo-location.png'));
@@ -127,10 +149,14 @@ async function generateExamples() {
   const svgQR = new QRGenerator({
     url: 'https://github.com',
     size: 800,
-    foregroundColor: '#24292F',
+    gradient: true,
+    gradientColors: '#24292F,#0969DA',
+    gradientAngle: 135,
     backgroundColor: '#FFFFFF',
     eyeColor: '#0969DA',
-    eyeRadius: 0.4,
+    eyeRadius: 0.5,
+    rounded: true,
+    moduleRadius: 0.4,
     margin: 4
   });
 
@@ -142,11 +168,11 @@ async function generateExamples() {
   const customEyeQR = new QRGenerator({
     url: 'https://example.com',
     size: 600,
-    foregroundColor: '#000000',
+    foregroundColor: '#1a1a1a',
     backgroundColor: '#FFFFFF',
-    eyeColor: '#FF6B6B',
-    eyeRadius: 0.5,
-    moduleRadius: 0.2,
+    eyeColor: '#FF3B3B',
+    eyeRadius: 0.45,
+    rounded: false, // Keep modules square to emphasize eye difference
     margin: 4
   });
 
@@ -159,8 +185,14 @@ async function generateExamples() {
     url: 'https://example.com/products',
     size: 600,
     margin: 8, // Large margin for better scanning
-    foregroundColor: '#2E7D32',
-    backgroundColor: '#FFFFFF'
+    gradient: true,
+    gradientColors: '#11998e,#38ef7d',
+    gradientAngle: 45,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#0a6e5f',
+    eyeRadius: 0.4,
+    rounded: true,
+    moduleRadius: 0.35
   });
 
   await marginQR.generateToFile(path.join(OUTPUT_DIR, 'large-margin.png'));
@@ -175,8 +207,14 @@ async function generateExamples() {
       encryption: 'nopass'
     },
     size: 600,
-    foregroundColor: '#0288D1',
-    backgroundColor: '#E1F5FE'
+    gradient: true,
+    gradientColors: '#00d2ff,#3a7bd5',
+    gradientAngle: 90,
+    backgroundColor: '#FFFFFF',
+    eyeColor: '#2e5090',
+    eyeRadius: 0.5,
+    rounded: true,
+    moduleRadius: 0.35
   });
 
   await openWifiQR.generateToFile(path.join(OUTPUT_DIR, 'open-wifi.png'));
@@ -188,11 +226,13 @@ async function generateExamples() {
     url: 'https://colorful.example.com',
     size: 600,
     gradient: true,
-    gradientColors: '#667eea,#764ba2',
+    gradientColors: '#f093fb,#f5576c',
     gradientAngle: 135,
     eyeColor: '#ff0844',
-    eyeRadius: 0.4,
-    backgroundColor: '#f0f0f0',
+    eyeRadius: 0.5,
+    backgroundColor: '#FFFFFF',
+    rounded: true,
+    moduleRadius: 0.4,
     margin: 4
   });
 

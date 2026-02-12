@@ -26,7 +26,11 @@
     "test:coverage": "vitest run --coverage",
     "example:basic": "tsx examples/basic.ts",
     "example:programmatic": "tsx examples/programmatic.ts",
-    "example:advanced": "tsx examples/advanced.ts"
+    "example:advanced": "tsx examples/advanced.ts",
+    "example:basic-styles": "tsx examples/basic-examples.ts",
+    "example:create-logos": "tsx examples/create-logos.ts",
+    "example:with-logos": "tsx examples/logo-examples.ts",
+    "example:all": "npm run example:advanced && npm run example:basic-styles && npm run example:create-logos && npm run example:with-logos"
   },
   "keywords": [
     "qr",

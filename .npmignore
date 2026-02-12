@@ -19,7 +19,10 @@ examples/
 
 # Documentation (keep only README and CONTRIBUTING)
 QUICKSTART.md
-docs/
+ARCHITECTURE.md
+
+# Keep docs/images for visual examples in README
+!docs/images/
 
 # Build tools
 .eslintrc
