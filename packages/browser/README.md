@@ -5,6 +5,10 @@
 
 A professional browser QR code generator library with advanced styling options including **gradients**, **rounded modules**, **logo support**, **specialized QR types** (vCard, WiFi, Email, SMS, Geo), and **eye customization**.
 
+## 🎮 [Live Demo](https://luisma92.github.io/qr-styled/)
+
+Try the interactive demo to see all features in action!
+
 ## Features
 
 ✅ **Browser-native** - Uses HTML5 Canvas API
@@ -61,40 +65,55 @@ new QRGenerator(options: QROptions)
 ### Methods
 
 #### `generate(): Promise<HTMLCanvasElement>`
+
 Generates and returns the QR code canvas element.
 
 #### `appendTo(element: HTMLElement): Promise<HTMLCanvasElement>`
+
 Generates the QR code and appends it to the specified DOM element.
 
 #### `generateToDataURL(format?: 'png' | 'jpeg'): Promise<string>`
+
 Generates a data URL of the QR code.
 
 #### `generateToBlob(format?: 'png' | 'jpeg'): Promise<Blob>`
+
 Generates a Blob of the QR code image.
 
 #### `download(filename?: string): Promise<void>`
+
 Generates and downloads the QR code as an image file.
 
 #### `generateToSVG(): Promise<string>`
+
 Generates an SVG string of the QR code.
 
 #### `downloadSVG(filename?: string): Promise<void>`
+
 Generates and downloads the QR code as an SVG file.
 
 #### `updateOptions(options: Partial<QROptions>): void`
+
 Updates the generator options.
 
 ### Helper Functions
 
 ```typescript
 // Quick generation
-import { generateQR, generateQRToElement, generateQRAndDownload } from '@qr-styled/browser';
+import {
+  generateQR,
+  generateQRToElement,
+  generateQRAndDownload
+} from '@qr-styled/browser';
 
 // Generate canvas
 const canvas = await generateQR({ url: 'https://example.com' });
 
 // Generate and append to DOM
-const canvas = await generateQRToElement({ url: 'https://example.com' }, document.body);
+const canvas = await generateQRToElement(
+  { url: 'https://example.com' },
+  document.body
+);
 
 // Generate and download
 await generateQRAndDownload({ url: 'https://example.com' }, 'qrcode.png');
@@ -104,44 +123,44 @@ await generateQRAndDownload({ url: 'https://example.com' }, 'qrcode.png');
 
 ### Basic Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `url` | `string` | - | URL or text content |
-| `type` | `QRDataType` | `'url'` | Type of QR data |
-| `size` | `number` | `400` | Canvas size in pixels |
-| `foregroundColor` | `string` | `'#000000'` | QR code color |
-| `backgroundColor` | `string` | `'#ffffff'` | Background color |
-| `padding` | `number` | `20` | Canvas padding |
-| `margin` | `number` | `4` | QR quiet zone (modules) |
-| `errorCorrectionLevel` | `'L'\|'M'\|'Q'\|'H'` | `'M'` | Error correction |
+| Option                 | Type                 | Default     | Description             |
+| ---------------------- | -------------------- | ----------- | ----------------------- |
+| `url`                  | `string`             | -           | URL or text content     |
+| `type`                 | `QRDataType`         | `'url'`     | Type of QR data         |
+| `size`                 | `number`             | `400`       | Canvas size in pixels   |
+| `foregroundColor`      | `string`             | `'#000000'` | QR code color           |
+| `backgroundColor`      | `string`             | `'#ffffff'` | Background color        |
+| `padding`              | `number`             | `20`        | Canvas padding          |
+| `margin`               | `number`             | `4`         | QR quiet zone (modules) |
+| `errorCorrectionLevel` | `'L'\|'M'\|'Q'\|'H'` | `'M'`       | Error correction        |
 
 ### Styling Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `rounded` | `boolean` | `false` | Use rounded corners |
-| `moduleRadius` | `number` | `0.5` | Module corner radius (0-0.5) |
-| `cornerRadius` | `number` | `30` | Background corner radius |
-| `gradient` | `boolean` | `false` | Enable gradient |
-| `gradientColors` | `string` | - | Comma-separated colors |
-| `gradientAngle` | `number` | `45` | Gradient angle |
+| Option           | Type      | Default | Description                  |
+| ---------------- | --------- | ------- | ---------------------------- |
+| `rounded`        | `boolean` | `false` | Use rounded corners          |
+| `moduleRadius`   | `number`  | `0.5`   | Module corner radius (0-0.5) |
+| `cornerRadius`   | `number`  | `30`    | Background corner radius     |
+| `gradient`       | `boolean` | `false` | Enable gradient              |
+| `gradientColors` | `string`  | -       | Comma-separated colors       |
+| `gradientAngle`  | `number`  | `45`    | Gradient angle               |
 
 ### Logo Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `logo` | `string\|HTMLImageElement` | - | Logo path/URL or image element |
-| `logoSize` | `number` | - | Logo size override |
-| `logoPadding` | `number` | `20` | Padding around logo |
-| `logoShape` | `'circle'\|'square'` | `'circle'` | Logo background shape |
-| `logoRadius` | `number` | `10` | Square logo corner radius |
+| Option        | Type                       | Default    | Description                    |
+| ------------- | -------------------------- | ---------- | ------------------------------ |
+| `logo`        | `string\|HTMLImageElement` | -          | Logo path/URL or image element |
+| `logoSize`    | `number`                   | -          | Logo size override             |
+| `logoPadding` | `number`                   | `20`       | Padding around logo            |
+| `logoShape`   | `'circle'\|'square'`       | `'circle'` | Logo background shape          |
+| `logoRadius`  | `number`                   | `10`       | Square logo corner radius      |
 
 ### Eye Customization
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `eyeColor` | `string` | - | Custom eye (finder) color |
-| `eyeRadius` | `number` | - | Custom eye corner radius |
+| Option      | Type     | Default | Description               |
+| ----------- | -------- | ------- | ------------------------- |
+| `eyeColor`  | `string` | -       | Custom eye (finder) color |
+| `eyeRadius` | `number` | -       | Custom eye corner radius  |
 
 ## Examples
 
@@ -307,7 +326,7 @@ const qr = new QRGenerator({
   type: 'geo',
   data: {
     latitude: 40.7128,
-    longitude: -74.0060
+    longitude: -74.006
   }
 });
 ```
@@ -320,6 +339,7 @@ const qr = new QRGenerator({
 - Opera 76+
 
 Requires support for:
+
 - HTML5 Canvas API
 - ES2020+ features
 - Promises/async-await

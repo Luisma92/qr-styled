@@ -42,7 +42,7 @@ QR Code generator for browser environments using HTML5 Canvas.
 npm install @qr-styled/browser
 ```
 
-[View Documentation →](./packages/browser/README.md)
+🎮 **[Try Live Demo](https://luisma92.github.io/qr-styled/)** | [View Documentation →](./packages/browser/README.md)
 
 ## Development
 
