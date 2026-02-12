@@ -235,9 +235,9 @@
         </div>
       </div>
 
-      <!-- Example 6: Logo - Circle Shape -->
+      <!-- Example 6: Fully Rounded -->
       <div class="demo-card">
-        <h3>QR with Logo (Circle)</h3>
+        <h3>Fully Rounded QR</h3>
         <div class="qr-container" id="qr6"></div>
         <div class="controls">
           <button onclick="downloadQR('qr6', 'logo-circle-qr.png')">
@@ -246,9 +246,9 @@
         </div>
       </div>
 
-      <!-- Example 7: Logo - Square Shape -->
+      <!-- Example 7: High Contrast -->
       <div class="demo-card">
-        <h3>QR with Logo (Square)</h3>
+        <h3>High Contrast Eyes</h3>
         <div class="qr-container" id="qr7"></div>
         <div class="controls">
           <button onclick="downloadQR('qr7', 'logo-square-qr.png')">
@@ -257,9 +257,9 @@
         </div>
       </div>
 
-      <!-- Example 8: Logo + Gradient -->
+      <!-- Example 8: Purple Gradient -->
       <div class="demo-card">
-        <h3>Logo with Gradient</h3>
+        <h3>Purple Gradient + Gold Eyes</h3>
         <div class="qr-container" id="qr8"></div>
         <div class="controls">
           <button onclick="downloadQR('qr8', 'logo-gradient-qr.png')">
@@ -412,57 +412,57 @@
           await qr5.appendTo(document.getElementById('qr5'));
           window.qrGenerators.qr5 = qr5;
 
-          // Example 6: Logo - Circle Shape
+          // Example 6: Fully Rounded Modules
+          console.log('Generating QR6...');
           const qr6 = new QRGenerator({
             url: 'https://github.com/Luisma92/qr-styled',
             size: 300,
-            foregroundColor: '#000000',
+            foregroundColor: '#ff6b6b',
             backgroundColor: '#ffffff',
-            logo: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-            logoSize: 80,
-            logoShape: 'circle',
-            logoBackgroundColor: '#ffffff',
-            logoPadding: 8,
-            rounded: true
+            rounded: true,
+            moduleRadius: 0.5,
+            eyeColor: '#c92a2a',
+            eyeRadius: 0.5,
+            cornerRadius: 30
           });
           await qr6.appendTo(document.getElementById('qr6'));
           window.qrGenerators.qr6 = qr6;
+          console.log('✅ QR6 completed');
 
-          // Example 7: Logo - Square Shape
+          // Example 7: High Contrast with Custom Eyes
+          console.log('Generating QR7...');
           const qr7 = new QRGenerator({
             url: 'https://www.npmjs.com/package/@qr-styled/browser',
             size: 300,
-            foregroundColor: '#cb3837',
+            foregroundColor: '#1e3a8a',
             backgroundColor: '#ffffff',
-            logo: 'https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png',
-            logoSize: 70,
-            logoShape: 'square',
-            logoBackgroundColor: '#ffffff',
-            logoRadius: 10,
-            logoPadding: 8,
             rounded: true,
-            eyeColor: '#cb3837'
+            moduleRadius: 0.4,
+            eyeColor: '#7c3aed',
+            eyeRadius: 0.5,
+            cornerRadius: 20
           });
           await qr7.appendTo(document.getElementById('qr7'));
           window.qrGenerators.qr7 = qr7;
+          console.log('✅ QR7 completed');
 
-          // Example 8: Logo with Gradient
+          // Example 8: Purple Gradient with Contrasting Eyes
+          console.log('Generating QR8...');
           const qr8 = new QRGenerator({
             url: 'https://qr-styled.dev',
             size: 300,
             gradient: true,
             gradientColors: '#8E2DE2, #4A00E0',
             gradientAngle: 135,
-            logo: 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png',
-            logoSize: 75,
-            logoShape: 'circle',
-            logoBackgroundColor: '#000000',
-            logoPadding: 10,
             rounded: true,
-            eyeColor: '#8E2DE2'
+            moduleRadius: 0.45,
+            eyeColor: '#FFD700',
+            eyeRadius: 0.5,
+            cornerRadius: 25
           });
           await qr8.appendTo(document.getElementById('qr8'));
           window.qrGenerators.qr8 = qr8;
+          console.log('✅ QR8 completed');
 
           // Example 9: vCard Contact
           const qr9 = new QRGenerator({
@@ -552,6 +552,12 @@
           if (demoGrid) demoGrid.style.display = 'grid';
         } catch (error) {
           console.error('❌ Error during QR generation:', error);
+          // If it's an Event (like CORS error), convert to readable error
+          if (error instanceof Event) {
+            throw new Error(
+              'Image loading failed (likely CORS issue). Check that all images are accessible.'
+            );
+          }
           throw error;
         }
       }
@@ -559,9 +565,18 @@
       // Initialize the demo
       initializeDemo().catch(error => {
         console.error('❌ Error loading demo:', error);
-        const errorMessage =
-          error?.message || error?.toString() || 'Unknown error occurred';
-        const errorStack = error?.stack || 'No stack trace available';
+
+        // Handle Event objects
+        let errorMessage, errorStack;
+        if (error instanceof Event) {
+          errorMessage =
+            'Image loading failed (likely CORS issue). External images cannot be loaded due to security restrictions.';
+          errorStack = 'Event type: ' + error.type;
+        } else {
+          errorMessage =
+            error?.message || error?.toString() || 'Unknown error occurred';
+          errorStack = error?.stack || 'No stack trace available';
+        }
 
         document.body.innerHTML = `
         <div style="padding: 40px; max-width: 800px; margin: 0 auto;">
