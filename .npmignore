@@ -1,0 +1,46 @@
+# Source files (only ship compiled dist/)
+src/
+tsconfig.json
+tsconfig.*.json
+
+# Test files
+*.test.ts
+*.spec.ts
+tests/
+__tests__/
+
+# Examples
+examples/
+
+# Development files
+.github/
+.vscode/
+.idea/
+
+# Documentation (keep only README and CONTRIBUTING)
+QUICKSTART.md
+docs/
+
+# Build tools
+.eslintrc
+.prettierrc
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.travis.yml
+.circleci/
+.gitlab-ci.yml
+
+# Misc
+*.log
+.DS_Store
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Keep only what's needed for the package
+# Included: dist/, README.md, LICENSE, CONTRIBUTING.md, package.json
