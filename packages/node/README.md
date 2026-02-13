@@ -4,7 +4,7 @@
 
 A powerful Node.js/TypeScript library for generating QR codes with advanced styling options including gradients, rounded modules, and logo support.
 
-> 💡 **Looking for browser support?** Check out [@qr-styled/browser](https://github.com/Luisma92/qr-styled-browser) for frontend/React/Vue applications.
+> 💡 **Looking for browser support?** Check out [@qr-styled/browser](https://github.com/Luisma92/qr-styled/tree/main/packages/browser) for frontend/React/Vue applications.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org)
